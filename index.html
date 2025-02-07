@@ -16,26 +16,28 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
+            padding: 20px; /* Adds space on smaller screens */
         }
         .message {
-            font-size: 22px;
+            font-size: 5vw; /* Adjusts size based on screen width */
             color: #d63384;
             font-weight: bold;
             margin-bottom: 10px;
-            margin-top: -50px; /* Moves the text higher */
+            margin-top: -5vh; /* Moves text slightly higher */
         }
         .yipee-gif {
-            width: 300px;
+            width: 80%; /* Makes GIF responsive */
+            max-width: 300px; /* Prevents it from getting too large */
             margin-bottom: 15px;
-            margin-top: -20px; /* Moves the GIF higher */
+            margin-top: -3vh; /* Moves GIF slightly higher */
         }
         .form-button {
-            font-size: 20px;
+            font-size: 4vw; /* Adjusts button text size */
             color: white;
             text-decoration: none;
             font-weight: bold;
             background-color: #ff4d79;
-            padding: 12px 20px;
+            padding: 10px 15px;
             border-radius: 8px;
             display: inline-block;
             margin-top: 15px;
@@ -44,13 +46,24 @@
         .form-button:hover {
             background-color: #e63e6d;
         }
+
+        /* Ensures better spacing on very small screens */
+        @media (max-width: 480px) {
+            .message {
+                font-size: 6vw;
+            }
+            .form-button {
+                font-size: 5vw;
+                padding: 12px 18px;
+            }
+        }
     </style>
 </head>
 <body>
     <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
     <img class="yipee-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/yipee.gif" alt="Yipee GIF">
     
-    <!-- Google Forms Button Below GIF (Now Always Visible) -->
+    <!-- Google Forms Button Below GIF (Now Always Visible & Mobile-Friendly) -->
     <a class="form-button" href="https://forms.gle/hwCe8LKWhTmcxyQY8" target="_blank">💌 Please answer this form 💌</a>
 
 </body>
