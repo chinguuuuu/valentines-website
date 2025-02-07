@@ -40,34 +40,40 @@
             font-weight: bold;
             display: none;
         }
+        .yipee-gif {
+            display: none;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
-    <!-- Updated GIF link -->
-    <img src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/refs/heads/main/nanobombs-cat.gif" alt="Cat with Flower GIF" width="300">
-    
-    <h1>Joanna, will you be my Valentine? 💖</h1>
-    <div class="container">
-        <button class="btn yes" onclick="showMessage()">Yes</button>
-        <button class="btn no" onclick="growYesButton()">No</button>
-        <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
+    <div id="content">
+        <!-- Updated GIF link -->
+        <img id="cat-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/refs/heads/main/nanobombs-cat.gif" alt="Cat with Flower GIF" width="300">
+        
+        <h1 id="question">Joanna, will you be my Valentine? 💖</h1>
+        <div class="container">
+            <button class="btn yes" onclick="showMessage()">Yes</button>
+            <button class="btn no" onclick="growYesButton()">No</button>
+        </div>
     </div>
 
+    <p class="message" id="message">Resto Freeno after our classes are done, that's if you're free :D</p>
+    <img class="yipee-gif" id="yipeeGif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/refs/heads/main/yipee.gif" alt="Yipee GIF" width="300">
+
     <script>
-        let yesButtonSize = 20;
+        function showMessage() {
+            // Hide everything except the message and GIF
+            document.getElementById("content").style.display = "none";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("yipeeGif").style.display = "block";
+        }
 
         function growYesButton() {
             let yesButton = document.querySelector('.yes');
-            yesButtonSize += 5;
-            yesButton.style.fontSize = `${yesButtonSize}px`;
-            yesButton.style.padding = `${yesButtonSize / 2}px ${yesButtonSize}px`;
-        }
-
-        function showMessage() {
-            document.querySelector('.message').style.display = 'block';
-            setTimeout(() => {
-                window.location.href = "YOUR_GOOGLE_FORM_LINK_HERE";
-            }, 3000); 
+            let size = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = `${size + 5}px`;
+            yesButton.style.padding = `${(size + 5) / 2}px ${(size + 5)}px`;
         }
     </script>
 </body>
