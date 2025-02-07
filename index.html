@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yay! 🎉</title>
+    <title>Will You Be My Valentine? 💖</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -16,43 +16,42 @@
             height: 100vh;
             overflow: hidden;
             position: relative;
-            padding: 20px; /* Adds space on smaller screens */
+            padding: 20px;
         }
-        .message {
-            font-size: 5vw; /* Adjusts size based on screen width */
+        .valentine-text {
+            font-size: 5vw;
             color: #d63384;
             font-weight: bold;
-            margin-bottom: 10px;
-            margin-top: -5vh; /* Moves text slightly higher */
+            margin-bottom: 20px;
         }
-        .yipee-gif {
-            width: 80%; /* Makes GIF responsive */
-            max-width: 300px; /* Prevents it from getting too large */
-            margin-bottom: 15px;
-            margin-top: -3vh; /* Moves GIF slightly higher */
+        .valentine-gif {
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 20px;
         }
-        .form-button {
-            font-size: 4vw; /* Adjusts button text size */
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            background-color: #ff4d79;
-            padding: 10px 15px;
+        .btn {
+            font-size: 4vw;
+            padding: 12px 20px;
+            cursor: pointer;
+            border: none;
             border-radius: 8px;
-            display: inline-block;
-            margin-top: 15px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+            margin: 10px;
+            font-weight: bold;
         }
-        .form-button:hover {
-            background-color: #e63e6d;
+        .yes {
+            background-color: #ff4d79;
+            color: white;
+        }
+        .no {
+            background-color: #999;
+            color: white;
         }
 
-        /* Ensures better spacing on very small screens */
         @media (max-width: 480px) {
-            .message {
+            .valentine-text {
                 font-size: 6vw;
             }
-            .form-button {
+            .btn {
                 font-size: 5vw;
                 padding: 12px 18px;
             }
@@ -60,11 +59,18 @@
     </style>
 </head>
 <body>
-    <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
-    <img class="yipee-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/yipee.gif" alt="Yipee GIF">
-    
-    <!-- Google Forms Button Below GIF (Now Always Visible & Mobile-Friendly) -->
-    <a class="form-button" href="https://forms.gle/hwCe8LKWhTmcxyQY8" target="_blank">💌 Please answer this form 💌</a>
+    <h1 class="valentine-text">Joanna, will you be my Valentine? 💖</h1>
+    <img class="valentine-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/nanobombs-cat.gif" alt="Cat with Flower GIF">
 
+    <div>
+        <button class="btn yes" onclick="redirectToYes()">Yes</button>
+        <button class="btn no">No</button>
+    </div>
+
+    <script>
+        function redirectToYes() {
+            window.location.href = "yes.html";
+        }
+    </script>
 </body>
 </html>
