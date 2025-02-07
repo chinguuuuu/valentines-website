@@ -25,6 +25,7 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
+            position: relative;
         }
         .yes {
             background-color: #ff4d79;
@@ -34,8 +35,7 @@
         .no {
             background-color: #999;
             color: white;
-            position: absolute;
-            transition: transform 0.3s ease-in-out;
+            transition: transform 0.2s ease-in-out;
         }
         .message {
             font-size: 22px;
@@ -64,17 +64,12 @@
 
         function moveButton() {
             let noButton = document.querySelector('.no');
-            let question = document.getElementById('question');
+            
+            // Keep the button close to its original position
+            let x = Math.random() * 40 - 20; // Moves within -20px to +20px range
+            let y = Math.random() * 40 - 20;
 
-            // Get question position
-            let rect = question.getBoundingClientRect();
-            let x = rect.left + Math.random() * 50 - 25; // Slight shift around text
-            let y = rect.top + Math.random() * 50 - 25;
-
-            noButton.style.position = "absolute";
-            noButton.style.left = `${x}px`;
-            noButton.style.top = `${y}px`;
-
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
             noButton.innerText = messages[moveCount % messages.length];
             moveCount++;
         }
