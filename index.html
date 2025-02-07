@@ -8,11 +8,15 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 15%;
+            margin-top: 10%;
             background-color: #f8d7da;
+            overflow: hidden;
         }
         .container {
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         .btn {
             font-size: 20px;
@@ -31,11 +35,12 @@
             background-color: #999;
             color: white;
             position: absolute;
+            transition: transform 0.3s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <!-- Use a direct GIF URL -->
+    <!-- Direct GIF URL -->
     <img src="https://media.tenor.com/wfIe8kSu8vcAAAAC/cat-flower.gif" alt="Cat with Flower GIF" width="300">
     
     <h1>Joanna, will you be my Valentine? 💖</h1>
@@ -50,9 +55,13 @@
         let yesButtonSize = 20;
 
         function moveButton() {
-            let x = Math.random() * window.innerWidth * 0.7;
-            let y = Math.random() * window.innerHeight * 0.7;
             let noButton = document.querySelector('.no');
+            let maxX = window.innerWidth * 0.8 - noButton.clientWidth;
+            let maxY = window.innerHeight * 0.8 - noButton.clientHeight;
+
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+
             noButton.style.transform = `translate(${x}px, ${y}px)`;
             noButton.innerText = messages[moveCount % messages.length];
             moveCount++;
