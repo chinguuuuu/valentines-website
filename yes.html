@@ -8,13 +8,14 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 10%;
             background-color: #f8d7da;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             height: 100vh;
+            overflow: hidden;
+            position: relative;
         }
         .message {
             font-size: 22px;
@@ -24,11 +25,59 @@
         }
         .yipee-gif {
             width: 300px;
+            margin-bottom: 20px;
+        }
+        .form-link {
+            font-size: 18px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            background-color: #ff4d79;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: floatHearts linear infinite;
+        }
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
     <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
     <img class="yipee-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/yipee.gif" alt="Yipee GIF">
+    
+    <p><a class="form-link" href="https://forms.gle/hwCe8LKWhTmcxyQY8" target="_blank">Please answer this form</a></p>
+
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerText = ["❤️", "💖", "💕", "💗", "💞", "💓", "💘"][Math.floor(Math.random() * 7)];
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+            
+            let size = Math.random() * 20 + 10; // Random size between 10px and 30px
+            heart.style.fontSize = size + "px";
+            heart.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+            heart.style.top = "-10px"; // Start above the screen
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+            
+            setTimeout(() => {
+                heart.remove(); // Remove the heart after animation
+            }, 5000);
+        }
+
+        setInterval(createHeart, 300); // Create a new heart every 300ms
+    </script>
 </body>
 </html>
