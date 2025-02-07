@@ -50,7 +50,7 @@
     <!-- Updated GIF link -->
     <img src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/refs/heads/main/nanobombs-cat.gif" alt="Cat with Flower GIF" width="300">
     
-    <h1>Joanna, will you be my Valentine? 💖</h1>
+    <h1 id="question">Joanna, will you be my Valentine? 💖</h1>
     <div class="container">
         <button class="btn yes" onclick="showMessage()">Yes</button>
         <button class="btn no" onmouseover="moveButton()" onclick="growYesButton()">No</button>
@@ -64,13 +64,17 @@
 
         function moveButton() {
             let noButton = document.querySelector('.no');
-            let maxX = window.innerWidth * 0.9 - noButton.clientWidth;  // Max 90% of screen width
-            let maxY = window.innerHeight * 0.9 - noButton.clientHeight; // Max 90% of screen height
+            let question = document.getElementById('question');
 
-            let x = Math.random() * maxX;
-            let y = Math.random() * maxY;
+            // Get question position
+            let rect = question.getBoundingClientRect();
+            let x = rect.left + Math.random() * 50 - 25; // Slight shift around text
+            let y = rect.top + Math.random() * 50 - 25;
 
-            noButton.style.transform = `translate(${x}px, ${y}px)`;
+            noButton.style.position = "absolute";
+            noButton.style.left = `${x}px`;
+            noButton.style.top = `${y}px`;
+
             noButton.innerText = messages[moveCount % messages.length];
             moveCount++;
         }
