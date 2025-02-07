@@ -64,8 +64,8 @@
 
         function moveButton() {
             let noButton = document.querySelector('.no');
-            let maxX = window.innerWidth - noButton.clientWidth;  
-            let maxY = window.innerHeight - noButton.clientHeight; 
+            let maxX = window.innerWidth * 0.9 - noButton.clientWidth;  // Max 90% of screen width
+            let maxY = window.innerHeight * 0.9 - noButton.clientHeight; // Max 90% of screen height
 
             let x = Math.random() * maxX;
             let y = Math.random() * maxY;
