@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 15%;
+            background-color: #f8d7da;
+        }
+        .container {
+            position: relative;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .yes {
+            background-color: #ff4d79;
+            color: white;
+            transition: transform 0.2s ease-in-out;
+        }
+        .no {
+            background-color: #999;
+            color: white;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <img src="https://media.tenor.com/images/3a4a4a8e02d7c9d4e7eb5f7bb5f3d1f7/tenor.gif" alt="Cat with Flower GIF">
+    <h1>Joanna, will you be my Valentine? 💖</h1>
+    <div class="container">
+        <button class="btn yes" onclick="redirectToForm()">Yes</button>
+        <button class="btn no" onmouseover="moveButton()" onclick="growYesButton()">No</button>
+    </div>
+
+    <script>
+        const messages = ["Definitely no", "Pick yes", "Nice try", "Not happening", "You sure?", "Think again", "C'mon, say yes!"];
+        let moveCount = 0;
+        let yesButtonSize = 20;
+
+        function moveButton() {
+            let x = Math.random() * window.innerWidth * 0.7;
+            let y = Math.random() * window.innerHeight * 0.7;
+            let noButton = document.querySelector('.no');
+            noButton.style.transform = `translate(${x}px, ${y}px)`;
+            noButton.innerText = messages[moveCount % messages.length];
+            moveCount++;
+        }
+        
+        function growYesButton() {
+            let yesButton = document.querySelector('.yes');
+            yesButtonSize += 5;
+            yesButton.style.fontSize = `${yesButtonSize}px`;
+            yesButton.style.padding = `${yesButtonSize / 2}px ${yesButtonSize}px`;
+        }
+
+        function redirectToForm() {
+            window.location.href = "YOUR_GOOGLE_FORM_LINK_HERE";
+        }
+    </script>
+</body>
+</html>
