@@ -10,10 +10,8 @@
             text-align: center;
             margin-top: 10%;
             background-color: #f8d7da;
-            overflow: hidden;
         }
         .container {
-            position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -25,7 +23,6 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
-            position: relative;
         }
         .yes {
             background-color: #ff4d79;
@@ -35,7 +32,6 @@
         .no {
             background-color: #999;
             color: white;
-            transition: transform 0.2s ease-in-out;
         }
         .message {
             font-size: 22px;
@@ -50,30 +46,16 @@
     <!-- Updated GIF link -->
     <img src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/refs/heads/main/nanobombs-cat.gif" alt="Cat with Flower GIF" width="300">
     
-    <h1 id="question">Joanna, will you be my Valentine? 💖</h1>
+    <h1>Joanna, will you be my Valentine? 💖</h1>
     <div class="container">
         <button class="btn yes" onclick="showMessage()">Yes</button>
-        <button class="btn no" onmouseover="moveButton()" onclick="growYesButton()">No</button>
+        <button class="btn no" onclick="growYesButton()">No</button>
         <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
     </div>
 
     <script>
-        const messages = ["Definitely no", "Pick yes", "Nice try", "Not happening", "You sure?", "Think again", "C'mon, say yes!"];
-        let moveCount = 0;
         let yesButtonSize = 20;
 
-        function moveButton() {
-            let noButton = document.querySelector('.no');
-            
-            // Keep the button close to its original position
-            let x = Math.random() * 40 - 20; // Moves within -20px to +20px range
-            let y = Math.random() * 40 - 20;
-
-            noButton.style.transform = `translate(${x}px, ${y}px)`;
-            noButton.innerText = messages[moveCount % messages.length];
-            moveCount++;
-        }
-        
         function growYesButton() {
             let yesButton = document.querySelector('.yes');
             yesButtonSize += 5;
