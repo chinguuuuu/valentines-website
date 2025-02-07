@@ -63,12 +63,28 @@
 
     <div>
         <button class="btn yes" onclick="redirectToYes()">Yes</button>
-        <button class="btn no">No</button>
+        <button class="btn no" onmouseover="changeNoText()">No</button>
     </div>
 
     <script>
         function redirectToYes() {
-            window.location.href = "yes.html"; // Only redirects when clicking "Yes"
+            window.location.href = "yes.html"; // Redirects when clicking "Yes"
+        }
+
+        const messages = [
+            "Definitely no",
+            "Pick yes",
+            "Nice try",
+            "Not happening",
+            "You sure?",
+            "Think again",
+            "C'mon, say yes!"
+        ];
+
+        function changeNoText() {
+            let noButton = document.querySelector('.no');
+            let randomIndex = Math.floor(Math.random() * messages.length);
+            noButton.innerText = messages[randomIndex];
         }
     </script>
 </body>
