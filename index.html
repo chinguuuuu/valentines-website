@@ -8,13 +8,24 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 10%;
             background-color: #f8d7da;
-        }
-        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+        .question {
+            font-size: 24px;
+            font-weight: bold;
+            color: #d63384;
+            margin: 20px 0;
+        }
+        .valentine-gif {
+            width: 300px;
+            margin-bottom: 20px;
         }
         .btn {
             font-size: 20px;
@@ -23,37 +34,70 @@
             cursor: pointer;
             border: none;
             border-radius: 5px;
+            font-weight: bold;
         }
         .yes {
             background-color: #ff4d79;
             color: white;
+            transition: transform 0.2s ease-in-out;
+        }
+        .yes:hover {
+            background-color: #e63e6d;
         }
         .no {
             background-color: #999;
             color: white;
         }
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: floatHearts linear infinite;
+        }
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
-    <img src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/nanobombs-cat.gif" alt="Cat with Flower GIF" width="300">
+    <img class="valentine-gif" src="https://raw.githubusercontent.com/chinguuuuu/valentines-website/main/nanobombs-cat.gif" alt="Cat with Flower GIF">
     
-    <h1>Joanna, will you be my Valentine? 💖</h1>
-    <div class="container">
-        <button class="btn yes" onclick="goToYesPage()">Yes</button>
-        <button class="btn no" onclick="growYesButton()">No</button>
+    <p class="question">Joanna, will you be my Valentine? 💖</p>
+
+    <div class="buttons">
+        <button class="btn yes" onclick="redirectToYesPage()">Yes</button>
+        <button class="btn no">No</button>
     </div>
 
     <script>
-        function goToYesPage() {
-            window.location.href = "yes.html"; // Redirects to the new page
+        function redirectToYesPage() {
+            window.location.href = "yes.html";
         }
 
-        function growYesButton() {
-            let yesButton = document.querySelector('.yes');
-            let size = parseInt(window.getComputedStyle(yesButton).fontSize);
-            yesButton.style.fontSize = `${size + 5}px`;
-            yesButton.style.padding = `${(size + 5) / 2}px ${(size + 5)}px`;
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerText = ["❤️", "💖", "💕", "💗", "💞", "💓", "💘"][Math.floor(Math.random() * 7)];
+            heart.classList.add("heart");
+            document.body.appendChild(heart);
+            
+            let size = Math.random() * 20 + 10; // Random size between 10px and 30px
+            heart.style.fontSize = size + "px";
+            heart.style.left = Math.random() * 100 + "vw"; // Random horizontal position
+            heart.style.top = "-10px"; // Start above the screen
+            heart.style.animationDuration = Math.random() * 3 + 2 + "s"; // Random fall speed
+            
+            setTimeout(() => {
+                heart.remove(); // Remove the heart after animation
+            }, 5000);
         }
+
+        setInterval(createHeart, 300); // Create a new heart every 300ms
     </script>
 </body>
 </html>
