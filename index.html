@@ -37,16 +37,24 @@
             position: absolute;
             transition: transform 0.3s ease-in-out;
         }
+        .message {
+            font-size: 22px;
+            color: #d63384;
+            margin-top: 20px;
+            font-weight: bold;
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Direct GIF URL -->
+    <!-- Use a direct link to the GIF -->
     <img src="https://media.tenor.com/wfIe8kSu8vcAAAAC/cat-flower.gif" alt="Cat with Flower GIF" width="300">
     
     <h1>Joanna, will you be my Valentine? 💖</h1>
     <div class="container">
-        <button class="btn yes" onclick="redirectToForm()">Yes</button>
+        <button class="btn yes" onclick="showMessage()">Yes</button>
         <button class="btn no" onmouseover="moveButton()" onclick="growYesButton()">No</button>
+        <p class="message">Resto Freeno after our classes are done, that's if you're free :D</p>
     </div>
 
     <script>
@@ -56,8 +64,8 @@
 
         function moveButton() {
             let noButton = document.querySelector('.no');
-            let maxX = window.innerWidth * 0.8 - noButton.clientWidth;
-            let maxY = window.innerHeight * 0.8 - noButton.clientHeight;
+            let maxX = window.innerWidth - noButton.clientWidth;  
+            let maxY = window.innerHeight - noButton.clientHeight; 
 
             let x = Math.random() * maxX;
             let y = Math.random() * maxY;
@@ -74,8 +82,11 @@
             yesButton.style.padding = `${yesButtonSize / 2}px ${yesButtonSize}px`;
         }
 
-        function redirectToForm() {
-            window.location.href = "YOUR_GOOGLE_FORM_LINK_HERE";
+        function showMessage() {
+            document.querySelector('.message').style.display = 'block';
+            setTimeout(() => {
+                window.location.href = "YOUR_GOOGLE_FORM_LINK_HERE";
+            }, 3000); 
         }
     </script>
 </body>
